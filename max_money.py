@@ -1,24 +1,49 @@
-# yumekawa-utils
-Blockchain Utility Collection for Sugarchain
+#!/usr/bin/python
+# Code from https://github.com/bitcoinbook/bitcoinbook/blob/develop/code/max_money.py
 
-## max_money
-![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money.png)
+# float128 and int64
+import numpy as np # https://pypi.org/project/numpy/
 
- - depends
-```bash
-sudo apt-get install gnuplot && \
-pip install numpy
-```
+# print to file
+import sys # https://stackoverflow.com/questions/34926517/stop-sys-stdout-from-writing-to-a-text-file/34926590
 
- - run
-```bash
-./max_money.py && \
-cat max_money.csv && \
-gnuplot max_money.plot
-```
+# open - print to file
+orig_stdout = sys.stdout
+sys.stdout=open("max_money.csv", "w")
 
- - data
-```
+# setup
+current_reward = np.float128(50.0 * 10**8) # 50 BTC = 50 0000 0000 Satoshis
+reward_interval = np.int64(210000) # 210000 is around every 4 years with a 10 minute block interval
+total = np.float128(0.0)
+halving_count = np.int64(0)
+
+# print header
+print "Count\tSupply\t\t\tReward"
+print "%d\t" % halving_count,
+print "%.2f\t\t\t" % total, # current supply is 0
+print "%.24g" % (current_reward / 1)
+
+# main loop
+while current_reward > 1: # bigger than one satoshi
+    halving_count += 1
+    print "%d\t" % halving_count,
+    total += reward_interval * current_reward
+    print "%.2f\t" % (total / 1), # current supply is going bigger to max_money
+    current_reward /= 2
+    print "%.24g" % (current_reward / 1)
+
+# close - print to file
+sys.stdout.close()
+sys.stdout=orig_stdout
+
+# print total
+print "Total BTC to ever be created: %.2f" % total, "Satoshis"
+print "Total BTC to ever be created: %.0f" % round(total / 10**8), "BTC (rounded)"
+
+
+# output example - BTC
+"""
+$ ./max_money.py 
 Count	Supply			Reward
 0	0.00			5000000000
 1	1050000000000000.00	2500000000
@@ -56,4 +81,4 @@ Count	Supply			Reward
 33	2099999999755527.75	0.582076609134674072265625
 Total BTC to ever be created: 2099999999755527.75 Satoshis
 Total BTC to ever be created: 21000000 BTC (rounded)
-```
+"""
