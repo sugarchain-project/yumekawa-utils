@@ -1,26 +1,3 @@
-# yumekawa-utils
-Blockchain Utility Collection for Sugarchain
-
-## max_money
-![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money.png)
-
- - depends
-```bash
-sudo apt-get install gnuplot && \
-pip install numpy
-```
-
- - run
-```bash
-./max_money.py && \
-cat max_money.csv && \
-gnuplot max_money.plot
-```
-
- - data
-```
-Total SUGAR to ever be created: 251999999722800000 Satoshis
-Total SUGAR to ever be created: 2519999997.228 SUGAR (rounded)
 Count	Supply			Reward
 0	0			5000000000
 1	126000000000000000	2500000000
@@ -56,4 +33,3 @@ Count	Supply			Reward
 31	251999999647200000	2
 32	251999999697600000	1
 33	251999999722800000	0
-```
