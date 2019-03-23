@@ -1,3 +1,5 @@
+#!/usr/bin/gnuplot 
+
 # QT
 set term qt size 1200, 600;
 
@@ -8,11 +10,12 @@ set term qt size 1200, 600;
 set title "Max Money BTC\n{/*0.75 Halving Interval = 210000 (4y)}" font ",15";
 set key center right box;
 
-set xrange [0:9];
-set xtics 0, 1 rotate by 45 right;
+HALVING_COUNT="9";
+set xrange [0:HALVING_COUNT];
+set xtics 0, 1;
 set xlabel "Halving Count" tc rgb "black" offset 0;
 
-MAX_MONEY="21e+14" # 2100000000000000
+MAX_MONEY="21e+14"; # 2100000000000000
 set lmargin at screen 0.15;
 set yrange [0:MAX_MONEY];
 set ytics 0, MAX_MONEY/2; # 1050000000000000
@@ -21,7 +24,7 @@ set format y "%.0f";
 set ylabel "Total Supply (in Satoshis)" tc rgb "red" offset -3;
 set ytics nomirror;
 
-BLOCK_REWARD="5e+9" # 5000000000
+BLOCK_REWARD="5e+9"; # 5000000000
 set rmargin at screen 0.89;
 set y2range [0:BLOCK_REWARD];
 set y2tics 0, BLOCK_REWARD/2; 

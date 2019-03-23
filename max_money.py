@@ -21,16 +21,16 @@ halving_count = np.int64(0)
 print "Count\tSupply\t\t\tReward"
 print "%d\t" % halving_count,
 print "%.2f\t\t\t" % total, # current supply is 0
-print "%.24g" % (current_reward / 1)
+print "%.24g" % current_reward
 
 # main loop
 while current_reward > 1: # bigger than one satoshi
     halving_count += 1
     print "%d\t" % halving_count,
     total += reward_interval * current_reward
-    print "%.2f\t" % (total / 1), # current supply is going bigger to max_money
+    print "%.2f\t" % total, # current supply is going bigger to max_money
     current_reward /= 2
-    print "%.24g" % (current_reward / 1)
+    print "%.24g" % current_reward
 
 # close - print to file
 sys.stdout.close()
