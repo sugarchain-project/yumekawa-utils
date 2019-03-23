@@ -9,7 +9,7 @@ import sys # https://stackoverflow.com/questions/34926517/stop-sys-stdout-from-w
 
 # open - print to file
 orig_stdout = sys.stdout
-sys.stdout=open("max_money.csv", "w")
+sys.stdout=open("max_moneyBTC.csv", "w")
 
 # setup
 current_reward = np.int64(50 * 10**8) # 50 BTC = 50 0000 0000 Satoshis
@@ -43,7 +43,7 @@ print "Total BTC to ever be created: %d" % round(round(total)/10**8), "BTC (roun
 
 # output example - BTC
 """
-$ ./max_money.py && cat max_money.csv && gnuplot max_money.plot
+$ ./max_moneyBTC.py && cat max_moneyBTC.csv && gnuplot max_moneyBTC.plot
 Total BTC to ever be created: 2099999997690000 Satoshis
 Total BTC to ever be created: 21000000 BTC (rounded)
 Count	Supply			Reward

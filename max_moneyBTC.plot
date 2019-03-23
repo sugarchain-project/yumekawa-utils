@@ -5,7 +5,7 @@ set term qt size 1200, 600;
 
 # PNG
 # set term png size 1200, 600;
-# set output 'max_money.png';
+# set output 'max_moneyBTC.png';
 
 set title "Max Money BTC\n{/*0.75 Halving Interval = 210000 (4y)}" font ",15";
 set key center right box;
@@ -45,7 +45,7 @@ set style line 2 \
     pointtype 2 pointsize 1.5
 
 plot \
-    'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
+    'max_moneyBTC.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:3 axis x1y2 with steps linestyle 2 title "Block Reward", \
     ''              using 1:3 axis x1y2 with points linestyle 2 notitle,
 
