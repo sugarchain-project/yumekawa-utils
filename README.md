@@ -1,7 +1,20 @@
 # yumekawa-utils
 Blockchain Utility Collection for Sugarchain
 
-## max_money
+## Contents
+ - `max_money`: check the schedule of total supply and draw graph
+
+## Comming Soon
+ - `difficulty`: check historical difficulty with blocktime and draw graph
+ - `nonce`: check historical nonces and draw graph
+ - `blockchain_size`: check historical total blockchain size and draw graph
+ - `blocktime_RT`: check current blocktime in realtime
+ - `hash_attack`: simulate hash attack
+ - `getFullBlockchain`: dump all blockchain data as plain text
+
+-----
+
+### max_money
 ![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/max_money.png)
 
  - depends
@@ -16,7 +29,7 @@ cd max_money && \
 ./max_money.py && \
 cat max_money.csv && \
 gnuplot max_money.plot && \
-cd
+cd ..
 ```
 
  - data
@@ -60,7 +73,7 @@ Count	Supply			Reward
 33	251999999722800000	0
 ```
 
-## max_moneyBTC (optional)
+### max_moneyBTC (optional)
 ![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_moneyBTC/max_moneyBTC.png)
 
  - data
