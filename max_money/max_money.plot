@@ -14,8 +14,7 @@ set title "Max Money SUGAR\n \
     }" font ",15";
 set key center right box;
 
-HALVING_COUNT="9";
-set xrange [0:HALVING_COUNT];
+set xrange [0:*];
 set xtics 0, 1;
 set xlabel "Halving Count" tc rgb "black" offset 0;
 
@@ -49,8 +48,6 @@ set style line 2 \
     linetype 1 linewidth 2 \
     pointtype 2 pointsize 1.5
 
-# set offset 1,1,1,1;
-
 plot \
     'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:3 axis x1y2 with steps linestyle 2 title "Block Reward", \
@@ -58,8 +55,14 @@ plot \
     ''              using 1:2:(sprintf("%0.f", $2)) with labels rotate by 315 left offset 1.2,-0.5 tc rgb '#990000' notitle, \
     ''              using 1:3:(sprintf("%0.f", $3)) axis x1y2 with labels rotate by 0 left offset 2,0.75 tc rgb '#000099' notitle, \
 
+# setting min max range
 set yrange [GPVAL_DATA_Y_MIN:GPVAL_DATA_Y_MAX]
 set y2range [GPVAL_DATA_Y2_MIN:GPVAL_DATA_Y2_MAX]
+set ytics 0, GPVAL_DATA_Y_MAX/2; # 126000000000000000
+
+# resetting xaxis
+set xrange [0:9];
+
 replot
     
 pause -1
