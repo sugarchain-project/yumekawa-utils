@@ -34,8 +34,8 @@ init_reward_printer = current_reward # store it for print after
 # reward_interval = np.int64(210000) # BTC about 4 years
 # reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
 # reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around about 4 years with a 5 seconds block interval
-# reward_interval = np.int64(210240 * 120) # 210240*120 = 25228800 is around exactly 4 years with a 5 seconds block interval
-reward_interval = np.int64(210240 / 2 * 120) # 210240/2*120 = 12614400 is around exactly 2 years with a 5 seconds block interval
+# reward_interval = np.int64(210240 * 120) # 210240*120 = 25228800 is exactly 4 years with a 5 seconds block interval
+reward_interval = np.int64(210240 / 2 * 120) # 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
 
 # blocktime = np.int64(600) # BTC 10 minutes
 blocktime = np.int64(5) # 5 seconds for sugarchain
