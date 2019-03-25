@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot 
 
 # QT
-set term qt size 1200, 600;
+set terminal qt size 1200,600;
 
 # PNG
 # set term png size 1200, 600;

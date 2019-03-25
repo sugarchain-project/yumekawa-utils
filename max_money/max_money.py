@@ -23,11 +23,13 @@ sys.stdout=open("max_money.csv", "w")
 halving_count = np.int64(0)
 total = np.float128(0)
 
-# current_reward = np.float128(50 * 10**8) # 50 SUGAR = 50 0000 0000 Satoshis
-current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
+# current_reward = np.float128(50 * 10**8) # BTC float128
+current_reward = np.int64(50 * 10**8) # BTC int64
+# current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
 
+reward_interval = np.int64(210000 * 1) # BTC
 # reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around every 4 years with a 5 seconds block interval
-reward_interval = np.int64(105120*2) # 3600*24/600*365*4 = 210240 is around every 4 years with a 5 seconds block interval
+# reward_interval = np.int64(105120*2) # 3600*24/600*365*4 = 210240 is around every 4 years with a 5 seconds block interval
 
 # blocktime = np.int64(5) # 5 seconds for sugarchain
 blocktime = np.int64(600) # BTC 10 minutes
@@ -39,8 +41,8 @@ print "%d\t\t\t" % total, # current supply is 0
 print "%d" % current_reward
 
 # main loop
-# while current_reward > 0 and halving_count < 64: # BTC
-while current_reward > 1 and halving_count < 35: # TEST SUGAR
+while current_reward > 0 and halving_count < 64: # BTC
+# while current_reward > 1 and halving_count < 35: # TEST SUGAR
     halving_count += 1
     print "%d\t" % halving_count,
     total += reward_interval * current_reward
@@ -54,11 +56,15 @@ sys.stdout=orig_stdout
 
 # print result
 print ""
-print "  Halving Interval:\t%d" % reward_interval, "Blocks", "(%.16g" % (reward_interval * blocktime / 3600 / 24 / 365), "Years)"
+print "  Halving Interval:\t%d" % reward_interval, "Blocks"
+print "  * in Years:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600 / 24 / 365), "Years"
+print "  * in Days:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600 / 24), "Days"
+print "  * in Hours:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600), "Hours"
+print "  * in Minutes:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 60), "Minutes"
+print "  * in Seconds:\t\t  %.16g" % (np.float128(reward_interval) * blocktime), "Seconds"
 print "  Total SUGAR:\t\t%d" % total, "Satoshis"
 print "  Total SUGAR:\t\t%.8f" % (total/1e+8), "SUGAR"
 print ""
-
 
 # output example - SUGAR
 """
