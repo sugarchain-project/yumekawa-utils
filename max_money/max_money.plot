@@ -50,7 +50,7 @@ plot \
     'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:3 axis x1y2 with steps linestyle 2 title "Block Reward", \
     ''              using 1:3 axis x1y2 with points linestyle 2 notitle, \
-    ''              using 1:2:(sprintf("%0.f", $2)) with labels rotate right offset 0,-0.5 tc rgb '#990000' notitle, \
+    ''              using 1:2:(sprintf("%0.f", $2)) with labels rotate by 315 left offset 1.2,-0.5 tc rgb '#990000' notitle, \
     ''              using 1:3:(sprintf("%0.f", $3)) axis x1y2 with labels rotate by 0 left offset 2.1,0.5 tc rgb '#000099' notitle, \
 
 pause -1
