@@ -74,7 +74,7 @@ Count	Supply			Reward
 ```
 
 ### max_moneyBTC (optional)
-![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_moneyBTC/max_moneyBTC.png)
+<!-- ![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_moneyBTC/max_moneyBTC.png) -->
 
  - data
 ```
