@@ -25,7 +25,6 @@ sys.stdout=open("max_money.csv", "w")
 # setup
 
 halving_count = np.int64(0)
-# total = np.float128(0) # some error for "long double"
 total = np.int64(0)
 
 # current_reward = np.float128(50 * 10**8) # BTC float128 # NOT CORRECT!!

@@ -19,21 +19,15 @@ set xrange [0:*];
 set xtics 0, 1;
 set xlabel "Halving Count" tc rgb "black" offset 0;
 
-# MAX_MONEY="2520000000e+8"; # 252000000000000000
 set lmargin at screen 0.15;
 set yrange [0:*];
-# set ytics 0, 1260000000e+8; # 126000000000000000
-# set ytics add (1890000000e+8) (2205000000e+8) (2362500000e+8) (2441250000e+8);
 set format y "%.0f";
 set ylabel "Total Supply (in Satoshis)" tc rgb "red" offset -3;
 set ytics nomirror;
 
-# BLOCK_REWARD="5e+9"; # 5000000000
 set rmargin at screen 0.89;
 set y2range [0:*];
-# set y2tics 0, BLOCK_REWARD/2; 
 set y2tics 0, 1e+9; 
-# set y2tics add (BLOCK_REWARD/4) (BLOCK_REWARD/8) (BLOCK_REWARD/16) (BLOCK_REWARD/32);
 set format y2 "%.0f";
 set y2label "Block Reward (in Satoshis)" tc rgb "blue" offset 2.5;
 
@@ -62,7 +56,7 @@ set ytics 0, GPVAL_DATA_Y_MAX/2; # half of max_money
 set y2range [GPVAL_DATA_Y2_MIN:GPVAL_DATA_Y2_MAX];
 set y2tics 0, GPVAL_DATA_Y2_MAX/2; # half of init reward
 
-# do resetting xaxis
+# do resetting x-axis
 set xrange [0:9];
 
 # do tics
