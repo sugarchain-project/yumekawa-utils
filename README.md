@@ -27,8 +27,8 @@ pip install numpy
 ```bash
 cd max_money && \
 ./max_money.py && \
-cat max_money.csv && \
-gnuplot max_money.plot && \
+cat ./max_money.csv && \
+gnuplot ./max_money.plot; \
 cd ..
 ```
 
