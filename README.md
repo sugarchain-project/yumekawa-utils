@@ -92,8 +92,22 @@ Count	Supply			Reward
 
  - data
 ```
-Total BTC to ever be created: 2099999997690000 Satoshis
-Total BTC to ever be created: 21000000 BTC (rounded)
+Block Time:		600 Seconds
+Halving Interval:	210000 Blocks
+* in Years:		  3.995433789954338 Years
+* in Days:		  1458.333333333333 Days
+* in Hours:		  35000 Hours
+* in Minutes:		  2100000 Minutes
+* in Seconds:		  126000000 Seconds
+Total Halving Count:	33 Times
+* in Years:		  131.8493150684932 Years
+* in Days:		  48125 Days
+* in Hours:		  1155000 Hours
+* in Minutes:		  69300000 Minutes
+* in Seconds:		  4158000000 Seconds
+Total Satoshis:	2099999997690000 Satoshis
+Total COINs:		20999999.97690000 BTC
+
 Count	Supply			Reward
 0	0			5000000000
 1	1050000000000000	2500000000
