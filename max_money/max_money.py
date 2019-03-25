@@ -12,9 +12,10 @@ orig_stdout = sys.stdout
 sys.stdout=open("max_money.csv", "w")
 
 # setup
-current_reward = np.int64(50 * 10**8) # 50 SUGAR = 50 0000 0000 Satoshis
+# current_reward = np.float128(50 * 10**8) # 50 SUGAR = 50 0000 0000 Satoshis
+current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
 reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around every 4 years with a 5 seconds block interval
-total = np.int64(0)
+total = np.float128(0)
 halving_count = np.int64(0)
 
 # print header
@@ -25,12 +26,13 @@ print "%d" % current_reward
 
 # main loop
 while current_reward > 0: # check current if reward is not zero
-    halving_count += 1
-    print "%d\t" % halving_count,
-    total += reward_interval * current_reward
-    print "%d\t" % total, # current supply is going bigger to max_money
-    current_reward /= 2
-    print "%d" % current_reward
+    while halving_count <= 64:
+        halving_count += 1
+        print "%d\t" % halving_count,
+        total += reward_interval * current_reward
+        print "%d\t" % total, # current supply is going bigger to max_money
+        current_reward /= 2
+        print "%.32g" % current_reward
 
 # close - print to file
 sys.stdout.close()
