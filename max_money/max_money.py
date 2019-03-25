@@ -138,9 +138,9 @@ BTC difference is -1155000
 if total/2 != first_halving:
     print "  # WARNING: the first halving is NOT half of the total supply!"
     print "  Total Supply:\t\t%d" % (total)
-    print "  Half of Total Supply:\t%d" % (total/2)
-    print "  First Halving:\t%d" % (first_halving)
-    print "  Difference:\t\t%d" % ((total/2)-first_halving), "Satoshis"
+    print "  Half of Total Supply:\t%d" % np.int64(total/2)
+    print "  First Halving:\t%d" % np.int64(first_halving)
+    print "  Difference:\t\t%d" % (np.int64(total/2)-np.int64(first_halving)), "Satoshis"
 else:
     print "  [ OK ]: first halving is half of the total supply"
 print ""
