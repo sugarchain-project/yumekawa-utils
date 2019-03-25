@@ -23,7 +23,6 @@ sys.stdout=open("max_money.csv", "w")
 # https://en.bitcoin.it/wiki/Bitcoin
 
 # setup
-
 halving_count = np.int64(0)
 total = np.int64(0)
 
