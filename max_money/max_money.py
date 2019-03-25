@@ -66,14 +66,23 @@ sys.stdout=orig_stdout
 
 # print result
 print ""
+# blocktime
+print "  Block Time:\t\t%d" % blocktime, "Seconds"
+# reward_interval
 print "  Halving Interval:\t%d" % reward_interval, "Blocks"
 print "  * in Years:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600 / 24 / 365), "Years"
 print "  * in Days:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600 / 24), "Days"
 print "  * in Hours:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600), "Hours"
 print "  * in Minutes:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 60), "Minutes"
 print "  * in Seconds:\t\t  %.16g" % (np.float128(reward_interval) * blocktime), "Seconds"
-print "  Total SUGAR:\t\t%d" % total, "Satoshis"
-print "  Total SUGAR:\t\t%.8f" % (total/1e+8), "SUGAR"
+# halving_count
+print "  Total Halving Count:\t%d" % halving_count, "Times"
+print "  * in Years:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime / 3600 / 24 / 365) ), "Years"
+print "  * in Days:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime / 3600 / 24) ), "Days"
+print "  * in Hours:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime / 3600) ), "Hours"
+# total
+print "  Total Satoshis:\t%d" % total, "Satoshis"
+print "  Total COINs:\t\t%.8f" % (total/1e+8), "BTC"
 print ""
 
 # output example - SUGAR
