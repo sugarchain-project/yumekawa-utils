@@ -2,7 +2,7 @@
 Blockchain Utility Collection for Sugarchain
 
 ## max_money
-![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money.png)
+![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/max_money.png)
 
  - depends
 ```bash
@@ -12,6 +12,7 @@ pip install numpy
 
  - run
 ```bash
+cd max_money && \
 ./max_money.py && \
 cat max_money.csv && \
 gnuplot max_money.plot
