@@ -11,12 +11,26 @@ import sys # https://stackoverflow.com/questions/34926517/stop-sys-stdout-from-w
 orig_stdout = sys.stdout
 sys.stdout=open("max_money.csv", "w")
 
+# note - BTC original halving is `3.9954337899543378996`
+"""
+>>> interval=np.float128(210000.0)
+>>> interval*600/3600/24/365
+3.9954337899543378996
+"""
+
 # setup
+
+halving_count = np.int64(0)
+total = np.float128(0)
+
 # current_reward = np.float128(50 * 10**8) # 50 SUGAR = 50 0000 0000 Satoshis
 current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
-reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around every 4 years with a 5 seconds block interval
-total = np.float128(0)
-halving_count = np.int64(0)
+
+# reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around every 4 years with a 5 seconds block interval
+reward_interval = np.int64(105120*2) # 3600*24/600*365*4 = 210240 is around every 4 years with a 5 seconds block interval
+
+# blocktime = np.int64(5) # 5 seconds for sugarchain
+blocktime = np.int64(600) # BTC 10 minutes
 
 # print header
 print "Count\tSupply\t\t\tReward"
@@ -25,22 +39,25 @@ print "%d\t\t\t" % total, # current supply is 0
 print "%d" % current_reward
 
 # main loop
-while current_reward > 0: # check current if reward is not zero
-    while halving_count <= 64:
-        halving_count += 1
-        print "%d\t" % halving_count,
-        total += reward_interval * current_reward
-        print "%d\t" % total, # current supply is going bigger to max_money
-        current_reward /= 2
-        print "%.32g" % current_reward
+# while current_reward > 0 and halving_count < 64: # BTC
+while current_reward > 1 and halving_count < 35: # TEST SUGAR
+    halving_count += 1
+    print "%d\t" % halving_count,
+    total += reward_interval * current_reward
+    print "%d\t" % total, # current supply is going bigger to max_money
+    current_reward /= 2
+    print "%.32g" % current_reward
 
 # close - print to file
 sys.stdout.close()
 sys.stdout=orig_stdout
 
-# print total
-print "Total SUGAR to ever be created: %d" % total, "Satoshis"
-print "Total SUGAR to ever be created: %.3f" % (total/1e+8), "SUGAR (rounded)"
+# print result
+print ""
+print "  Halving Interval:\t%d" % reward_interval, "Blocks", "(%.16g" % (reward_interval * blocktime / 3600 / 24 / 365), "Years)"
+print "  Total SUGAR:\t\t%d" % total, "Satoshis"
+print "  Total SUGAR:\t\t%.8f" % (total/1e+8), "SUGAR"
+print ""
 
 
 # output example - SUGAR
