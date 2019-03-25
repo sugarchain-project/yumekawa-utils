@@ -35,6 +35,8 @@ cd ..
  - data
 ```
 Block Time:		5 Seconds
+Initial Block Reward:	4294967296 Satoshis
+Initial Block Reward:	42.94967296 COINs
 Halving Interval:	12614400 Blocks
 * in Years:		  2 Years
 * in Days:		  730 Days

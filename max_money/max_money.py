@@ -31,6 +31,7 @@ total = np.int64(0)
 # current_reward = np.float128(50 * 10**8) # BTC float128 # NOT CORRECT!!
 # current_reward = np.int64(50 * 10**8) # BTC int64
 current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
+init_reward_printer = current_reward # store it for print after
 
 # reward_interval = np.int64(210000) # BTC about 4 years
 # reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
@@ -71,6 +72,9 @@ sys.stdout=orig_stdout
 print ""
 # blocktime
 print "  Block Time:\t\t%d" % blocktime, "Seconds"
+# reward
+print "  Initial Block Reward:\t%d" % (np.float128(init_reward_printer)), "Satoshis"
+print "  Initial Block Reward:\t%.8f" % (np.float128(init_reward_printer)/1e+8), "COINs"
 # reward_interval
 print "  Halving Interval:\t%d" % reward_interval, "Blocks"
 print "  * in Years:\t\t  %.16g" % (np.float128(reward_interval) * blocktime / 3600 / 24 / 365), "Years"
@@ -95,6 +99,8 @@ print ""
 yumekawa-utils$ cd max_money && ./max_money.py && cat ./max_money.csv && gnuplot ./max_money.plot; cd ..
 
   Block Time:		5 Seconds
+  Initial Block Reward:	4294967296 Satoshis
+  Initial Block Reward:	42.94967296 COINs
   Halving Interval:	12614400 Blocks
   * in Years:		  2 Years
   * in Days:		  730 Days
