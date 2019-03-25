@@ -92,6 +92,34 @@ print "  Total Satoshis:\t%d" % total, "Satoshis"
 print "  Total COINs:\t\t%f" % (total/1e+8), "COINs" # %.6f but it works. because %.8f NOT WOKRED!
 print ""
 
+# check range - int64
+if np.iinfo('int64').max < total:
+    print "error: the range of 'total' is too big (int64)"
+# if np.iinfo('int32').max < total:
+    # print "# WARNING: the range of 'total' is too big (int32)" # bypass - typedef int64_t CAmount;
+elif np.iinfo('int64').max < halving_count:
+    print "error: the range of 'halving_count' is too big (int64)"
+elif np.iinfo('int64').max < reward_interval:
+    print "error: the range of 'reward_interval' is too big (int64)"
+elif np.iinfo('int64').max < blocktime:
+    print "error: the range of 'blocktime' is too big (int64)"
+# check range - float128
+elif np.finfo('float128').max < init_reward_printer:
+    print "error: the range of 'init_reward_printer' is too big (float128)"
+elif np.finfo('float64').max < init_reward_printer:
+    print "error: the range of 'init_reward_printer' is too big (float64)"
+elif np.finfo('float32').max < init_reward_printer:
+    print "error: the range of 'init_reward_printer' is too big (float32)"
+# double check - init_reward_printer
+elif np.iinfo('int64').max < np.int64(init_reward_printer):
+    print "error: the range of 'init_reward_printer' is too big (int64)"
+# elif np.iinfo('int32').max < np.int64(init_reward_printer):
+#     print "# WARNING: the range of 'init_reward_printer' is too big (int32)" # bypass - already smaller than BTC
+else:
+    print "  [ OK ] all range check is finished"
+# print footer
+print ""
+
 # output example
 """
 yumekawa-utils$ cd max_money && ./max_money.py && cat ./max_money.csv && gnuplot ./max_money.plot; cd ..
@@ -113,6 +141,8 @@ yumekawa-utils$ cd max_money && ./max_money.py && cat ./max_money.csv && gnuplot
   * in Seconds:		  2081376000 Seconds
   Total Satoshis:	108356870904710400 Satoshis
   Total COINs:		1083568709.047104 COINs
+
+  [ OK ] all range check is finished
 
 Count	Supply			Reward
 0	0			4294967296
