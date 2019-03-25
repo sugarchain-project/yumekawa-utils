@@ -18,17 +18,21 @@ sys.stdout=open("max_money.csv", "w")
 3.9954337899543378996
 """
 
+# note - There are a maximum of 2,099,999,997,690,000 Bitcoin in Satoshis
+# Total BTC is 2099999997690000 Satoshis
+# https://en.bitcoin.it/wiki/Bitcoin
+
 # setup
 
 halving_count = np.int64(0)
 total = np.float128(0)
 
 # current_reward = np.float128(50 * 10**8) # BTC float128
-# current_reward = np.int64(50 * 10**8) # BTC int64
-current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
+current_reward = np.int64(50 * 10**8) # BTC int64
+# current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
 
 reward_interval = np.int64(210000) # BTC about 4 years
-reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
+# reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
 # reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around every 4 years with a 5 seconds block interval
 
 # blocktime = np.int64(5) # 5 seconds for sugarchain
