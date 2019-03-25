@@ -52,7 +52,13 @@ Total Halving Count:	33 Times
 Total Satoshis:	108356870904710400 Satoshis
 Total COINs:		1083568709.047104 COINs
 
-[ OK ] all range check is finished
+[ OK ]: all range check is finished
+
+# WARNING: the first halving is NOT half of the total supply!
+Total Supply:		108356870904710400
+Half of Total Supply:	54178435452355200
+First Halving:	54178435458662400
+Difference:		-6307200 Satoshis
 
 Count	Supply			Reward
 0	0			4294967296

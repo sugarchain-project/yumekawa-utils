@@ -25,6 +25,11 @@ sys.stdout=open("max_money.csv", "w")
 # setup
 halving_count = np.int64(0)
 total = np.int64(0)
+# total = np.int32(0) # check int32
+# total = np.float128(0) # check float128
+# total = np.float64(0) # check float64
+# total = np.float32(0) # check float32
+# total = np.float16(0) # check float16
 
 # current_reward = np.float128(50 * 10**8) # BTC float128 # NOT CORRECT!!
 # current_reward = np.int64(50 * 10**8) # BTC int64
@@ -62,6 +67,10 @@ while current_reward > 0 and halving_count < 35: # TEST SUGAR
 
     print "%.32g" % current_reward
 
+    # store first halving
+    if halving_count == 1:
+        first_halving = total
+    
 # close - print to file
 sys.stdout.close()
 sys.stdout=orig_stdout
@@ -116,8 +125,24 @@ elif np.iinfo('int64').max < np.int64(init_reward_printer):
 # elif np.iinfo('int32').max < np.int64(init_reward_printer):
 #     print "# WARNING: the range of 'init_reward_printer' is too big (int32)" # bypass - already smaller than BTC
 else:
-    print "  [ OK ] all range check is finished"
+    print "  [ OK ]: all range check is finished"
 # print footer
+print ""
+
+# check first halving amount
+"""
+BTC difference is -1155000
+>>> (2099999997690000/2)-1050000000000000
+-1155000
+"""
+if total/2 != first_halving:
+    print "  # WARNING: the first halving is NOT half of the total supply!"
+    print "  Total Supply:\t\t%d" % (total)
+    print "  Half of Total Supply:\t%d" % (total/2)
+    print "  First Halving:\t%d" % (first_halving)
+    print "  Difference:\t\t%d" % ((total/2)-first_halving), "Satoshis"
+else:
+    print "  [ OK ]: first halving is half of the total supply"
 print ""
 
 # output example
@@ -142,7 +167,13 @@ yumekawa-utils$ cd max_money && ./max_money.py && cat ./max_money.csv && gnuplot
   Total Satoshis:	108356870904710400 Satoshis
   Total COINs:		1083568709.047104 COINs
 
-  [ OK ] all range check is finished
+  [ OK ]: all range check is finished
+
+  # WARNING: the first halving is NOT half of the total supply!
+  Total Supply:		108356870904710400
+  Half of Total Supply:	54178435452355200
+  First Halving:	54178435458662400
+  Difference:		-6307200 Satoshis
 
 Count	Supply			Reward
 0	0			4294967296
