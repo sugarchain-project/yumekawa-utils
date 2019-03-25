@@ -24,7 +24,7 @@ print "%d\t\t\t" % total, # current supply is 0
 print "%d" % current_reward
 
 # main loop
-while current_reward > 0: # bigger than one satoshi
+while current_reward > 0: # check current if reward is not zero
     halving_count += 1
     print "%d\t" % halving_count,
     total += reward_interval * current_reward
