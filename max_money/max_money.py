@@ -27,9 +27,9 @@ sys.stdout=open("max_money.csv", "w")
 halving_count = np.int64(0)
 total = np.float128(0)
 
-# current_reward = np.float128(50 * 10**8) # BTC float128
-current_reward = np.int64(50 * 10**8) # BTC int64
-# current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
+# current_reward = np.float128(50 * 10**8) # BTC float128 # NOT CORRECT!!
+# current_reward = np.int64(50 * 10**8) # BTC int64
+current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
 
 reward_interval = np.int64(210000) # BTC about 4 years
 # reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
@@ -84,7 +84,7 @@ print "  * in Minutes:\t\t  %.16g" % ( halving_count * (np.float128(reward_inter
 print "  * in Seconds:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime) ), "Seconds"
 # total
 print "  Total Satoshis:\t%d" % total, "Satoshis"
-print "  Total COINs:\t\t%.8f" % (total/1e+8), "BTC"
+print "  Total COINs:\t\t%.8f" % (total/1e+8), "SUGAR"
 print ""
 
 # output example - SUGAR

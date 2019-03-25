@@ -57,8 +57,9 @@ plot \
 
 # setting min max range
 set yrange [GPVAL_DATA_Y_MIN:GPVAL_DATA_Y_MAX]
+set ytics 0, GPVAL_DATA_Y_MAX/2; # half of max_money
 set y2range [GPVAL_DATA_Y2_MIN:GPVAL_DATA_Y2_MAX]
-set ytics 0, GPVAL_DATA_Y_MAX/2; # 126000000000000000
+set y2tics 0, GPVAL_DATA_Y2_MAX/2; # half of init reward
 
 # resetting xaxis
 set xrange [0:9];
