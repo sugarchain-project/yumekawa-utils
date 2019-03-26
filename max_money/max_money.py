@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # Code from https://github.com/bitcoinbook/bitcoinbook/blob/develop/code/max_money.py
 
-# float128 and int64
+# precisions for int and float
 import numpy as np # https://pypi.org/project/numpy/
 
 # print to file
@@ -24,6 +24,7 @@ sys.stdout=open("max_money.csv", "w")
 
 # setup
 halving_count = np.int64(0)
+
 total = np.int64(0)
 # total = np.int32(0) # check int32
 # total = np.float128(0) # check float128
@@ -54,21 +55,25 @@ print "%d" % current_reward
 # main loop
 # while current_reward > 0 and halving_count < 64: # BTC
 while current_reward > 0 and halving_count < 64: # TEST SUGAR "2^6=64"
+    # halving
     halving_count += 1
     print "%d\t" % halving_count,
+    
+    # total
     total += reward_interval * current_reward
     print "%d\t" % total, # current supply is going bigger to max_money
 
-    # correction for float128: it makes 1 to 0 satoshi.
+    # statement - current reward - correction for float128: it makes 1 to 0 satoshi.
     if current_reward <= 1.0:
         # current_reward = 0
         current_reward /= 2 # do same
     else:
         current_reward /= 2
 
+    # print - current reward
     print "%.32g" % current_reward
 
-    # store first halving
+    # store first halving for later
     if halving_count == 1:
         first_halving = total
     
