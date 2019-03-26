@@ -7,39 +7,22 @@ set terminal qt size 1200,600;
 # set term png size 1200, 600;
 # set output 'max_money.png';
 
-#test
-# set label 1 "Block Time = 5 Seconds"
-# set label 1 at graph 0.4, 0.55 tc lt 2
-# set label 2 "Initial Block Reward = 2^{32} = 4294967296 Satoshis"
-# set label 2 at graph 0.4, 0.5 tc lt 2
-# set label 3 "Halving Interval = 210240/2*120 = 12614400 (2 Years)"
-# set label 3 at graph 0.4, 0.45 tc lt 2
-
 # specs as label
-set label 1 "{/:Bold Halving Parameters}\n\
-  Block Time:		5 Seconds\n\
-  Initial Block Reward:	{2^{32}} = 4294967296 Satoshis\n\
-  Initial Block Reward:	42.94967296 COINs\n\
-  \n\
-  Halving Interval:	12614400 Blocks\n\
-  * in Years:		  2 Years\n\
-  * in Days:		  730 Days\n\
-  * in Hours:		  17520 Hours\n\
-  * in Minutes:	  1051200 Minutes\n\
-  * in Seconds:	  63072000 Seconds\n\
-  \n\
-  Total Halving Count:	64 Times\n\
-  * in Years:		  128 Years\n\
-  * in Days:		  46720 Days\n\
-  * in Hours:		  1121280 Hours\n\
-  * in Minutes:	  67276800 Minutes\n\
-  * in Seconds:	  4036608000 Seconds\n\
-  \n\
-  Total Satoshis:	108356870917324799 Satoshis\n\
-  Total COINs:	1083568709.173248 COINs (+1 satoshi correction)\n"
-set label 1 at graph 0.42, 0.71 tc rgb "black";
+# set label 1 "\
+# Block Time: 5 Seconds \t\
+# Initial Block Reward:  {2^{32}} = 4294967296 Satoshis \n\
+# Halving Interval: 12614400 Blocks (2 Years)\t\
+# Total Satoshis: 108356870917324799 Satoshis (+1 correction)"
+# set label 1 at graph 0, 1.13 tc rgb "black";
 
-set title "Sugarchain Halving Schedule" font ",15" offset 0;
+set title "Sugarchain Halving Schedule\n\
+{/*0.75\
+Initial Block Reward =  {2^{32}} = 4294967296 Satoshis,\n\
+{/*0.75\
+Block Time = 5 sec,\t\
+Halving Interval = 12614400 blocks(2y)\
+}" font ",15" offset 0,0;
+
 set key center right box;
 
 set xrange [0:*];
