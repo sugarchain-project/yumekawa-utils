@@ -26,21 +26,13 @@ sys.stdout=open("max_money.csv", "w")
 halving_count = np.int64(0)
 
 total = np.int64(0)
-# total = np.int32(0) # check int32
-# total = np.float128(0) # check float128
-# total = np.float64(0) # check float64
-# total = np.float32(0) # check float32
-# total = np.float16(0) # check float16
 
-# current_reward = np.float128(50 * 10**8) # BTC float128 # NOT CORRECT!!
-# current_reward = np.int64(50 * 10**8) # BTC int64
-current_reward = np.float128(4294967296) # 2^32 = 42 9496 7296 Satoshis
+current_reward = np.float128(4294967296) # float128 - 2^32 = 42 9496 7296 Satoshis
+# current_reward = np.int64(4294967296) # int64 - 2^32 = 42 9496 7296 Satoshis
 init_reward_printer = current_reward # store it for print after
 
 # reward_interval = np.int64(210000) # BTC about 4 years
 # reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
-# reward_interval = np.int64(210000 * 120) # 210000*120 = 25200000 is around about 4 years with a 5 seconds block interval
-# reward_interval = np.int64(210240 * 120) # 210240*120 = 25228800 is exactly 4 years with a 5 seconds block interval
 reward_interval = np.int64(210240 / 2 * 120) # 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
 
 # blocktime = np.int64(600) # BTC 10 minutes
@@ -54,8 +46,8 @@ print "2^{%.64g}\t" % np.log2(current_reward),
 print "%d" % current_reward
 
 # main loop
-# while current_reward > 0 and halving_count < 64: # BTC
-while current_reward > 0 and halving_count < 64: # TEST SUGAR "2^6=64"
+while current_reward > 0 and halving_count < 64:
+# while current_reward > 0 and halving_count < 33: # TEST
     # halving
     halving_count += 1
     print "%d\t" % halving_count,
@@ -110,30 +102,26 @@ print "  Total COINs:\t\t%f" % (total/1e+8), "COINs" # %.6f but it works. becaus
 print ""
 
 # check range - int64
-if np.iinfo('int64').max < total:
-    print "error: the range of 'total' is too big (int64)"
-# if np.iinfo('int32').max < total:
-    # print "# WARNING: the range of 'total' is too big (int32)" # bypass - typedef int64_t CAmount;
-elif np.iinfo('int64').max < halving_count:
-    print "error: the range of 'halving_count' is too big (int64)"
+if np.iinfo('int64').max <= halving_count:
+    print "  error: the range of 'halving_count' is too big (int64)"
+elif np.iinfo('int64').max <= total:
+    print "  error: the range of 'total' is too big (int64)"
 elif np.iinfo('int64').max < reward_interval:
-    print "error: the range of 'reward_interval' is too big (int64)"
+    print "  error: the range of 'reward_interval' is too big (int64)"
 elif np.iinfo('int64').max < blocktime:
-    print "error: the range of 'blocktime' is too big (int64)"
+    print "  error: the range of 'blocktime' is too big (int64)"
 # check range - float128
 elif np.finfo('float128').max < init_reward_printer:
-    print "error: the range of 'init_reward_printer' is too big (float128)"
+    print "  error: the range of 'init_reward_printer' is too big (float128)"
 elif np.finfo('float64').max < init_reward_printer:
-    print "error: the range of 'init_reward_printer' is too big (float64)"
+    print "  error: the range of 'init_reward_printer' is too big (float64)"
 elif np.finfo('float32').max < init_reward_printer:
-    print "error: the range of 'init_reward_printer' is too big (float32)"
+    print "  error: the range of 'init_reward_printer' is too big (float32)"
 # double check - init_reward_printer
 elif np.iinfo('int64').max < np.int64(init_reward_printer):
-    print "error: the range of 'init_reward_printer' is too big (int64)"
-# elif np.iinfo('int32').max < np.int64(init_reward_printer):
-#     print "# WARNING: the range of 'init_reward_printer' is too big (int32)" # bypass - already smaller than BTC
+    print "  error: the range of 'init_reward_printer' is too big (int64)"
 else:
-    print "  [ OK ]: all range check is finished"
+    print "  [ OK ]: checking range is finished"
 # print footer
 print ""
 
@@ -144,11 +132,22 @@ BTC difference is -1155000
 -1155000
 """
 if total/2 != first_halving:
-    print "  # WARNING: the first halving is NOT half of the total supply!"
+    print "  # WARNING: the first halving is NOT exactly half of the total supply!"
     print "  Total Supply:\t\t%d" % (total)
-    print "  Half of Total Supply:\t%d" % np.int64(total/2)
+    print "  Half of Total Supply:\t%d" % np.float128(total/2)
     print "  First Halving:\t%d" % np.int64(first_halving)
-    print "  Difference:\t\t%d" % (np.int64(total/2)-np.int64(first_halving)), "Satoshis"
+    print "  Difference:\t\t%d" % (np.int64(total/2)-np.int64(first_halving)), "Satoshi(s)"
 else:
-    print "  [ OK ]: first halving is half of the total supply"
+    print "  [ OK ]: first halving is exactly half of the total supply"
+print ""
+
+# note - deterministic
+if 108356870917324799+1 == 108356870904710400+(63072000/10*2):
+    print "  # INFO:"
+    print "  total supply '108356870917324799+1' is 108356870904710400+(63072000/10*2)'"
+    print "  '+1' is correction by virtual halving under 1 satoshi"
+    print "  108356870904710400 is 33th halving with 0 reward"
+    print "  63072000 is the halving interval in seconds"
+else:
+    print "  error: CRITICAL!! total supply is wrong"
 print ""
