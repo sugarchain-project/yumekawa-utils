@@ -32,7 +32,7 @@ gnuplot ./max_money.plot; \
 cd ..
 ```
 
- - data
+ - data: sugarchain
 ```
 Block Time:		5 Seconds
 Initial Block Reward:	4294967296 Satoshis
@@ -52,13 +52,19 @@ Total Halving Count:	64 Times
 Total Satoshis:	108356870917324799 Satoshis
 Total COINs:		1083568709.173248 COINs
 
-[ OK ]: all range check is finished
+[ OK ]: checking range is finished
 
-# WARNING: the first halving is NOT half of the total supply!
+# WARNING: the first halving is NOT exactly half of the total supply!
 Total Supply:		108356870917324799
 Half of Total Supply:	54178435458662399
 First Halving:	54178435458662400
-Difference:		-1 Satoshis
+Difference:		-1 Satoshi(s)
+
+# INFO:
+total supply '108356870917324799+1' is 108356870904710400+(63072000/10*2)'
+'+1' is correction by virtual halving under 1 satoshi
+108356870904710400 is 33th halving with 0 reward
+63072000 is the halving interval in seconds
 
 Count	Supply			Pow	Reward
 0	0			2^{32}	4294967296
@@ -131,7 +137,7 @@ Count	Supply			Pow	Reward
 ### max_moneyBTC (optional)
 <!-- ![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_moneyBTC/max_moneyBTC.png) -->
 
- - data
+ - data BTC
 ```
 Block Time:		600 Seconds
 Halving Interval:	210000 Blocks
