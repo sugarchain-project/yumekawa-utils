@@ -17,6 +17,8 @@ Blockchain Utility Collection for Sugarchain
 ### max_money
 ![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/max_money.png)
 
+![](https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/excel.png)
+
  - depends
 ```bash
 sudo apt-get install gnuplot && \
