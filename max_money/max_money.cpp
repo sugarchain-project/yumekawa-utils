@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdint>
-#include <quadmath.h>
 
 using namespace std;
 
