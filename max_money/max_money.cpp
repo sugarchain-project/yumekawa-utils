@@ -6,13 +6,15 @@
 // max_money: https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/max_money.py
 
 // const int reward_interval = 210000; // BTC
-const int reward_interval = 210240 / 2 * 120; // 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
+const uint64_t reward_interval = 12614400; // 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
 
 // uint64_t current_reward = 5000000000; // BTC: 50 * 100000000 (in Satoshis)
 // uint64_t current_reward = 4294967296; // SUGAR: 2^32 (in Satoshis)
-long double current_reward = 4294967296; // float - SUGAR: 2^32 (in Satoshis)
+// long double current_reward = 4294967296; // float - SUGAR: 2^32 (in Satoshis)
+long double current_reward = pow(2,32); // float - SUGAR: 2^32 (in Satoshis)
 uint64_t total = 0;
 int halving_count = 0;
+uint64_t first_halving;
 
 int main() {
   // print header
@@ -33,16 +35,27 @@ int main() {
     printf("%lu\t", total);
     current_reward /= 2;
 
-    // current_reward
+    // current reward
     printf("2^{%.f}\t", log2(current_reward));
     // printf("%lu\n", current_reward);
     // printf("%.64Lg\n", current_reward);
     if (current_reward > 0.01) {
       printf("%.64Lg\n", current_reward);
     } else {
-      printf("%.4Le\n", current_reward);
+      // printf("%.4Le\n", current_reward);
+      printf("%.64Lg\n", current_reward);
+    }
+    
+    // store first halving
+    if (halving_count == 1) {
+      first_halving = total;
     }
   }
+
+  // print first halving and guess
+  printf("\n");
+  printf("First Halving in Satoshis:\t%lu\n", first_halving);
+  printf("Guess Supply in Satoshis:\t%lu\n", first_halving*2);
 
   // print result
   printf("\n");
@@ -50,7 +63,6 @@ int main() {
   long double total_float = uint64_t(total);
   printf("Total Supply in COINs:\t\t%.8LF\n", total_float/100000000);
 }
-
 
 // Output Example
 /*
