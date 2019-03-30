@@ -1,14 +1,12 @@
 #include <iostream>
 #include <cstdint>
 
-using namespace std;
-
 // original: https://github.com/bitcoinbook/bitcoinbook/blob/develop/code/max_money.py
 // max_money: https://github.com/sugarchain-project/yumekawa-utils/blob/master/max_money/max_money.py
 
 const int reward_interval = 210000;
 
-uint64_t current_reward = 5000000000;
+uint64_t current_reward = 5000000000; // 50 * 100000000 (in Satoshis)
 uint64_t total = 0;
 
 int main() {
