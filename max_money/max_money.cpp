@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdint>
+#include <quadmath.h>
 
 using namespace std;
 
@@ -17,8 +18,8 @@ int main() {
     current_reward /= 2;
   }
   printf("Total Supply in Satoshis:\t%lu\n", total);
-  double d = static_cast<double>(total);
-  printf("Total Supply in BTC:\t\t%.8lf\n", d/100000000);
+  long double total_float = uint64_t(total);
+  printf("Total Supply in BTC:\t\t%.8LF\n", total_float/100000000);
 }
 
 
