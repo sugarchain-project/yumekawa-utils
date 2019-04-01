@@ -25,12 +25,28 @@ sudo apt-get install gnuplot && \
 pip install numpy
 ```
 
- - run
+ - run python
 ```bash
 cd max_money && \
 ./max_money.py && \
 cat ./max_money.csv && \
 gnuplot ./max_money.plot; \
+cd ..
+```
+
+- run C++
+```bash
+cd max_money && \
+g++ max_money.cpp -std=c++11 -o max_money; \
+./max_money; \
+cd ..
+```
+
+- run java (`sudo apt-get install default-jre`)
+```bash
+cd max_money && \
+javac max_money.java && \
+java max_money && \
 cd ..
 ```
 
