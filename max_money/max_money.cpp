@@ -58,6 +58,10 @@ int main() {
   printf("\n");
   printf("Total Supply in Satoshis:\t%lu\n", total);
   printf("Total Supply in COINs:\t\t%.8LF\n", total_float/100000000);
+
+  // print diff
+  printf("\n");
+  printf("Difference:\t\t\t%lu\n", first_halving*2 - total);
 }
 
 // Output Example
