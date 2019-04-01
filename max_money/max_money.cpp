@@ -11,7 +11,9 @@ const uint64_t reward_interval = 12614400; // 210240/2*120 = 12614400 is exactly
 // uint64_t current_reward = 5000000000; // BTC: 50 * 100000000 (in Satoshis)
 long double current_reward = pow(2,32); // float - SUGAR: 2^32 = 4294967296 (in Satoshis)
 
-uint64_t total = 0;
+// uint64_t total = 0;
+long double total = 0;
+
 int halving_count = 0;
 uint64_t first_halving;
 
@@ -19,7 +21,8 @@ int main() {
   // print header
   printf("\n");
   printf("Count\tSupply\t\t\tPow\tReward\n");
-  printf("%d\t%lu\t\t\t2^{%.f}\t%.64Lg\n", halving_count, total, log2(current_reward), current_reward);
+  // printf("%d\t%lu\t\t\t2^{%.f}\t%.64Lg\n", halving_count, total, log2(current_reward), current_reward);
+  printf("%d\t%.64Lg\t\t\t2^{%.f}\t%.64Lg\n", halving_count, total, log2(current_reward), current_reward);
 
   // main loop
   while ( (current_reward > 0) && (halving_count < 64) ) {
@@ -29,7 +32,8 @@ int main() {
 
     // total
     total += reward_interval * current_reward;
-    printf("%lu\t", total);
+    // printf("%lu\t", total);
+    printf("%.64Lg\t", total);
     current_reward /= 2;
 
     // current reward - log2
@@ -39,12 +43,12 @@ int main() {
     if (current_reward > 0.01) {
       printf("%.64Lg\n", current_reward);
     } else {
-      printf("%.64Lg\n", current_reward);
+      printf("%.64Lg\n", current_reward); // do nothing yet
     }
     
     // store first halving
     if (halving_count == 1) {
-      first_halving = total;
+      first_halving = total; // just save number to print later
     }
   }
 
@@ -56,12 +60,13 @@ int main() {
   // print result
   long double total_float = uint64_t(total);
   printf("\n");
-  printf("Total Supply in Satoshis:\t%lu\n", total);
+  // printf("Total Supply in Satoshis:\t%lu\n", total);
+  printf("Total Supply in Satoshis:\t%.64Lg\n", total);
   printf("Total Supply in COINs:\t\t%.8LF\n", total_float/100000000);
 
   // print diff
   printf("\n");
-  printf("Difference:\t\t\t%lu\n", first_halving*2 - total);
+  printf("Difference:\t\t\t%.64Lg\n", first_halving*2 - total);
 }
 
 // Output Example
