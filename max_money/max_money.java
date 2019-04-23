@@ -4,7 +4,8 @@
 // SUGARCHAIN
 // blockreward = pow(2,32) = 4294967296
 // halving_interval = pow(5,8)*32 = 12500000
-// TOTAL SUPPLY = 1073741824.00 SUGAR (in theory)
+// TOTAL SUPPLY = 1073741824.00000000 SUGAR (in theory)
+// TOTAL SUPPLY = 1073741823.87500000 SUGAR (in actual)
 
 import java.math.BigDecimal;
 

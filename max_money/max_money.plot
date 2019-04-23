@@ -1,5 +1,11 @@
 #!/usr/bin/gnuplot 
 
+# SUGARCHAIN
+# blockreward = pow(2,32) = 4294967296
+# halving_interval = pow(5,8)*32 = 12500000
+# TOTAL SUPPLY = 1073741824.00000000 SUGAR (in theory)
+# TOTAL SUPPLY = 1073741823.87500000 SUGAR (in actual)
+
 # do QT size
 screen_x=1280;
 screen_y=640;

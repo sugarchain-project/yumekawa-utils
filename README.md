@@ -42,7 +42,10 @@ g++ max_money.cpp -std=c++11 -o max_money; \
 cd ..
 ```
 
-- run java (`sudo apt-get install default-jre`)
+- run java
+```bash
+sudo apt-get install default-jre
+```
 ```bash
 cd max_money && \
 javac max_money.java && \
