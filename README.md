@@ -46,7 +46,7 @@ cd ..
 ```bash
 cd max_money && \
 javac max_money.java && \
-java max_money && \
+java max_money ; \
 cd ..
 ```
 
