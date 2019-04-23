@@ -52,21 +52,23 @@ public class max_money {
       }
 		}
 
-		// print first halving
-		System.out.printf("\n");
-		System.out.printf("  First Halving in Satoshis:\t%d\n", first_halving);
-    
+    // print result
+    System.out.printf("\n");
+    System.out.printf("  Total Supply in Satoshis:\t%s\n", total.stripTrailingZeros().toPlainString());
+
     // print guess and actual
     System.out.printf("\n");
-		System.out.printf("  Guess Supply in Satoshis:\t%d\n", first_halving * 2);
-		System.out.printf("  Actual Supply in Satoshis:\t%s\n", actual_supply.stripTrailingZeros().toPlainString());
+		System.out.printf("  Guess Supply in Satoshis:\t\t%d\n", first_halving * 2);
+		System.out.printf("  Actual Supply in Satoshis (33rd):\t%s\n", actual_supply.stripTrailingZeros().toPlainString());
 
-		// print result
-		System.out.printf("\n");
-		System.out.printf("  Total Supply in Satoshis:\t%s\n", total.stripTrailingZeros().toPlainString());
-		System.out.printf("  Total Supply in COINs:\t\t%s\n",
-				total.divide(new BigDecimal(100000000)).stripTrailingZeros().toPlainString());
+
+    // print in COIN
+    System.out.printf("\n");
+		// System.out.printf("  Total Supply in COINs:\t\t%s\n",
+		// 		total.divide(new BigDecimal(100000000)).stripTrailingZeros().toPlainString());
+    System.out.printf("  Total Supply in COINs (in theory):\t%d\n", first_halving * 2 / 100000000);
     System.out.printf("  Total Supply in COINs (rounded):\t%.0f\n", total.divide(new BigDecimal(100000000)));
+    System.out.printf("  Total Supply in COINs (in actual):\t%.8f\n", actual_supply.divide(new BigDecimal(100000000)));
     }
 }
 
@@ -110,6 +112,7 @@ Count	Supply			Pow	Reward
 31	107374182350000000	2^{1}	2
 32	107374182375000000	2^{0}	1
 33	107374182387500000	2^{-1}	0.5
+FINISHED
 34	107374182393750000	2^{-2}	0.25
 35	107374182396875000	2^{-3}	0.125
 36	107374182398437500	2^{-4}	0.0625
@@ -141,9 +144,12 @@ Count	Supply			Pow	Reward
 62	107374182399999999.976716935634613037109375	2^{-30}	0.000000000931322574615478515625
 63	107374182399999999.9883584678173065185546875	2^{-31}	0.0000000004656612873077392578125
 
-First Halving in Satoshis:	53687091200000000
-Guess Supply in Satoshis:	107374182400000000
+  Total Supply in Satoshis:	107374182399999999.9883584678173065185546875
 
-Total Supply in Satoshis:	107374182399999999.9883584678173065185546875
-Total Supply in COINs:		1073741823.999999999883584678173065185546875
+  Guess Supply in Satoshis:		107374182400000000
+  Actual Supply in Satoshis (33rd):	107374182387500000
+
+  Total Supply in COINs (in theory):	1073741824
+  Total Supply in COINs (rounded):	1073741824
+  Total Supply in COINs (in actual):	1073741823.87500000
 */
