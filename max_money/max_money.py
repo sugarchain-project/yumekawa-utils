@@ -46,36 +46,32 @@ reward_interval = np.int64(pow(5,8)*32) # 210240/2*120 = 12614400 is exactly 2 y
 blocktime = np.int64(5) # 5 seconds for sugarchain
 
 # print header
-print "Count\tSupply\t\t\tPow\tReward"
-print "%d\t" % halving_count,
-print "%d\t\t\t" % total, # current supply is 0
-print "2^{%.64g}\t" % np.log2(current_reward),
-print "%d" % current_reward
+print "Count\tSupply(COIN)\tPow\tReward(COIN)"
+print "%d\t" % halving_count, # Count = 0
+print "%d\t\t" % total, # Supply = 0
+print "2^{%.64g}\t" % np.log2(current_reward), # Pow = 2^{32}
+# print "%d" % current_reward # Reward = 4294967296
+print "%.8f" % (current_reward/1e+8) # Reward = 4294967296/1e+8
 
 # main loop
 while current_reward > 0 and halving_count < 64-1: # 64: 0..63
 # while current_reward > 0 and halving_count < 33: # TEST
-    # halving
+    # do halving count
     halving_count += 1
-    print "%d\t" % halving_count,
+    print "%d\t" % halving_count, # Count
     
-    # total
+    # do total
     total += reward_interval * current_reward
-    print "%d\t" % total, # current supply is going bigger to max_money
+    # print "%d\t" % total, # Supply
+    print "%.64g\t" % (total/1e+8), # Supply/1e+8
 
-    # statement - current reward - correction for float128: it makes 1 to 0 Sat.
-    if current_reward <= 1.0:
-        # current_reward = 0
-        current_reward /= 2 # do same
-    else:
-        current_reward /= 2
+    # do halving
+    current_reward /= 2
+    print "2^{%.0f}\t" % np.log2(current_reward), # Pow
+    # print "%.64g\t" % current_reward # Reward
+    print "%.8f\t" % (current_reward/1e+8) # Reward/1e+8
 
-    # print - "2^n" and "current reward"
-    # print "2^{%.64g}\t" % np.log2(current_reward),
-    print "2^{%.0f}\t" % np.log2(current_reward),
-    print "%.64g\t" % current_reward
-
-    # store first halving for later
+    # do store first halving for later
     if halving_count == 1:
         first_halving = total
     
