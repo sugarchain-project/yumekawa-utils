@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class max_money {
     public static void main(String[] args) throws Exception {
         final long reward_interval = 12500000;
-		BigDecimal current_reward = new BigDecimal(Math.pow(2, 32)); // float - SUGAR: 2^32 (in Satoshis)
+		BigDecimal current_reward = new BigDecimal(Math.pow(2, 32)); // float - SUGAR: 2^32 (in Sat)
 		BigDecimal total = BigDecimal.ZERO;
     BigDecimal actual_supply = total; // 33rd toal
 		int halving_count = 0;
@@ -47,19 +47,19 @@ public class max_money {
 
       // break loop when current reward under 1
       if (current_reward.subtract(new BigDecimal(0.5)).compareTo(BigDecimal.ZERO) == 0) { // if current_reward == 0.5
-        System.out.printf("FINISHED\n");
+        // System.out.printf("FINISHED\n");
         actual_supply = total;
       }
 		}
 
     // print result
     System.out.printf("\n");
-    System.out.printf("  Total Supply in Satoshis:\t%s\n", total.stripTrailingZeros().toPlainString());
+    System.out.printf("  Total Supply in Sat (63rd):\t%s\n", total.stripTrailingZeros().toPlainString());
 
     // print guess and actual
     System.out.printf("\n");
-		System.out.printf("  Guess Supply in Satoshis:\t\t%d\n", first_halving * 2);
-		System.out.printf("  Actual Supply in Satoshis (33rd):\t%s\n", actual_supply.stripTrailingZeros().toPlainString());
+		System.out.printf("  Guess Supply in Sat:\t\t%d\n", first_halving * 2);
+		System.out.printf("  Actual Supply in Sat (33rd):\t%s\n", actual_supply.stripTrailingZeros().toPlainString());
 
 
     // print in COIN
@@ -112,7 +112,6 @@ Count	Supply			Pow	Reward
 31	107374182350000000	2^{1}	2
 32	107374182375000000	2^{0}	1
 33	107374182387500000	2^{-1}	0.5
-FINISHED
 34	107374182393750000	2^{-2}	0.25
 35	107374182396875000	2^{-3}	0.125
 36	107374182398437500	2^{-4}	0.0625
@@ -144,10 +143,10 @@ FINISHED
 62	107374182399999999.976716935634613037109375	2^{-30}	0.000000000931322574615478515625
 63	107374182399999999.9883584678173065185546875	2^{-31}	0.0000000004656612873077392578125
 
-  Total Supply in Satoshis:	107374182399999999.9883584678173065185546875
+  Total Supply in Sat (63rd):	107374182399999999.9883584678173065185546875
 
-  Guess Supply in Satoshis:		107374182400000000
-  Actual Supply in Satoshis (33rd):	107374182387500000
+  Guess Supply in Sat:		107374182400000000
+  Actual Supply in Sat (33rd):	107374182387500000
 
   Total Supply in COINs (in theory):	1073741824
   Total Supply in COINs (rounded):	1073741824
