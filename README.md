@@ -34,7 +34,7 @@ gnuplot ./max_money.plot; \
 cd ..
 ```
 
-- run C++
+- run C++ `outdated`
 ```bash
 cd max_money && \
 g++ max_money.cpp -std=c++11 -o max_money; \
