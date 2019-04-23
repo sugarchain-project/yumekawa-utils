@@ -76,10 +76,10 @@ plot \
 # do setting min max range
 set yrange [GPVAL_DATA_Y_MIN:GPVAL_DATA_Y_MAX];
 set format y "%.0f"; # supply as 1073741823.875 but 1073741824 (int)
-set ytics 0, GPVAL_DATA_Y_MAX/2 rotate by -30 right offset 0,0; # half of max_money
+set ytics 0, GPVAL_DATA_Y_MAX/4 rotate by -30 right offset 0,0; # half of max_money
 set y2range [GPVAL_DATA_Y2_MIN:GPVAL_DATA_Y2_MAX];
 set format y2 "%.8f"; # reward as 42.94967296
-set y2tics 0, GPVAL_DATA_Y2_MAX/2 rotate by 30 left offset 0,0; # half of init reward
+set y2tics 0, GPVAL_DATA_Y2_MAX/4 rotate by 30 left offset 0,0; # half of init reward
 
 # do resetting x-axis
 set xrange [0:33];
