@@ -13,6 +13,7 @@ public class max_money {
         final long reward_interval = 12500000;
 		BigDecimal current_reward = new BigDecimal(Math.pow(2, 32)); // float - SUGAR: 2^32 (in Satoshis)
 		BigDecimal total = BigDecimal.ZERO;
+    BigDecimal actual_supply = total; // 33rd toal
 		int halving_count = 0;
 		long first_halving = 0;
 
@@ -43,18 +44,29 @@ public class max_money {
 			if (halving_count == 1) {
 				first_halving = total.longValue();
 			}
+
+      // break loop when current reward under 1
+      if (current_reward.subtract(new BigDecimal(0.5)).compareTo(BigDecimal.ZERO) == 0) { // if current_reward == 0.5
+        System.out.printf("FINISHED\n");
+        actual_supply = total;
+      }
 		}
 
-		// print first halving and guess
+		// print first halving
 		System.out.printf("\n");
-		System.out.printf("First Halving in Satoshis:\t%d\n", first_halving);
-		System.out.printf("Guess Supply in Satoshis:\t%d\n", first_halving * 2);
+		System.out.printf("  First Halving in Satoshis:\t%d\n", first_halving);
+    
+    // print guess and actual
+    System.out.printf("\n");
+		System.out.printf("  Guess Supply in Satoshis:\t%d\n", first_halving * 2);
+		System.out.printf("  Actual Supply in Satoshis:\t%s\n", actual_supply.stripTrailingZeros().toPlainString());
 
 		// print result
 		System.out.printf("\n");
-		System.out.printf("Total Supply in Satoshis:\t%s\n", total.stripTrailingZeros().toPlainString());
-		System.out.printf("Total Supply in COINs:\t\t%s\n",
+		System.out.printf("  Total Supply in Satoshis:\t%s\n", total.stripTrailingZeros().toPlainString());
+		System.out.printf("  Total Supply in COINs:\t\t%s\n",
 				total.divide(new BigDecimal(100000000)).stripTrailingZeros().toPlainString());
+    System.out.printf("  Total Supply in COINs (rounded):\t%.0f\n", total.divide(new BigDecimal(100000000)));
     }
 }
 
