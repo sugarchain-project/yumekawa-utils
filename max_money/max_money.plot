@@ -17,7 +17,7 @@ set terminal qt size screen_x,screen_y font "Ubuntu,12";
 
 # notations
 # set label 1 "(+1 correction)" at first -2.2, graph 0.97 tc rgb "black";
-# set label 2 "(exactly half)" at first 2.1, graph 0.455 tc rgb "#990000" rotate by 330 left offset 0,0;
+# set label 2 "(exactly half)" at first 2.1, graph 0.455 tc rgb "#990000" rotate by -30 left offset 0,0;
 
 # font
 set xtics font "Ubuntu Mono,12";
@@ -43,14 +43,14 @@ set xlabel "Halving Count (approx. every 2 years)" tc rgb "black" offset 0;
 set lmargin at screen 0.08;
 set yrange [0:*];
 set format y "%.0f"; # actually 1073741823.875 but rounded
-set ylabel "Total Supply" tc rgb "red" offset 0.0;
+set ylabel "Total Supply" tc rgb "red" rotate by -30 left offset 1.0, -0.15;
 set ytics nomirror;
 
 set rmargin at screen 0.90;
 set y2range [0:*];
 set y2tics 0, 1e+9; 
 set format y2 "%.8g";
-set y2label "Block Reward" tc rgb "blue" offset 0.0;
+set y2label "Block Reward" tc rgb "blue" rotate by 30 right offset -1.0, 0.0;
 
 set grid xtics lc rgb "#888888" lw 1 lt 0;
 set grid ytics lc rgb "#888888" lw 1 lt 0;
@@ -70,7 +70,7 @@ plot \
     'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:4 axis x1y2 with steps linestyle 2 title "Block Reward", \
     ''              using 1:4 axis x1y2 with points linestyle 2 notitle, \
-    ''              using 1:2:(sprintf("%.0f", $2)) with labels font "Ubuntu Mono,10" rotate by 330 left offset 1.0,-0.3 tc rgb '#990000' notitle, \
+    ''              using 1:2:(sprintf("%.0f", $2)) with labels font "Ubuntu Mono,10" rotate by -30 left offset 1.0,-0.3 tc rgb '#990000' notitle, \
     ''              using 1:4:(sprintf("{%s}/c=%.8f", stringcolumn(3), $4)) axis x1y2 with labels font "Ubuntu Mono,10" rotate by 30 left offset 0.75,0.5 tc rgb '#000099' notitle, \
 
 # do setting min max range
