@@ -27,7 +27,7 @@ set y2tics font "Ubuntu Mono,12";
 
 set title "Sugarchain Halving Schedule\n\
 {/*0.75\
-Total Supply = {/:Bold 1073741824} (in theory), {/:Bold 1073741823.875} (in actual)\n\
+Total Supply = {2^{30}} = {/:Bold 1073741824} (in theory), {/:Bold 1073741823.875} (in actual)\n\
 {/*0.75\
 Block Reward = {2^{32}}/c = {/:Bold 42.94967296} coin, [c = 1e+8], Block Time = {/:Bold 5} seconds,\n\
 {/*0.75\
@@ -70,8 +70,8 @@ plot \
     'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:4 axis x1y2 with steps linestyle 2 title "Block Reward", \
     ''              using 1:4 axis x1y2 with points linestyle 2 notitle, \
-    ''              using 1:2:(sprintf("%.0f", $2)) with labels font "Ubuntu Mono,10" rotate by 330 left offset 1.2,-0.5 tc rgb '#990000' notitle, \
-    ''              using 1:4:(sprintf("{%s}/c=%.8f", stringcolumn(3), $4)) axis x1y2 with labels font "Ubuntu Mono,10" rotate by 30 left offset 2,0.75 tc rgb '#000099' notitle, \
+    ''              using 1:2:(sprintf("%.0f", $2)) with labels font "Ubuntu Mono,10" rotate by 330 left offset 1.0,-0.3 tc rgb '#990000' notitle, \
+    ''              using 1:4:(sprintf("{%s}/c=%.8f", stringcolumn(3), $4)) axis x1y2 with labels font "Ubuntu Mono,10" rotate by 30 left offset 0.75,0.5 tc rgb '#000099' notitle, \
 
 # do setting min max range
 set yrange [GPVAL_DATA_Y_MIN:GPVAL_DATA_Y_MAX];
