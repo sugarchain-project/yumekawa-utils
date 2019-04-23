@@ -27,13 +27,14 @@ halving_count = np.int64(0)
 
 total = np.int64(0)
 
-current_reward = np.float128(4294967296) # float128 - 2^32 = 42 9496 7296 Satoshis
-# current_reward = np.int64(4294967296) # int64 - 2^32 = 42 9496 7296 Satoshis
+# current_reward = np.float128(4294967296) # float128 - 2^32 = 42 9496 7296 Satoshis
+current_reward = np.int64(4294967296) # int64 - 2^32 = 42 9496 7296 Satoshis
 init_reward_printer = current_reward # store it for print after
 
 # reward_interval = np.int64(210000) # BTC about 4 years
 # reward_interval = np.int64(210240) # BTC exactly 4 years: 3600*24/600*365*4 = 210240
-reward_interval = np.int64(210240 / 2 * 120) # 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
+# reward_interval = np.int64(210240 / 2 * 120) # 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
+reward_interval = np.int64(pow(5,8)*32) # 210240/2*120 = 12614400 is exactly 2 years with a 5 seconds block interval
 
 # blocktime = np.int64(600) # BTC 10 minutes
 blocktime = np.int64(5) # 5 seconds for sugarchain
@@ -64,7 +65,8 @@ while current_reward > 0 and halving_count < 64:
         current_reward /= 2
 
     # print - "2^n" and "current reward"
-    print "2^{%.64g}\t" % np.log2(current_reward),
+    # print "2^{%.64g}\t" % np.log2(current_reward),
+    print "2^{%.0f}\t" % np.log2(current_reward),
     print "%.64g\t" % current_reward
 
     # store first halving for later
