@@ -18,8 +18,8 @@ sys.stdout=open("max_money.csv", "w")
 3.9954337899543378996
 """
 
-# note - There are a maximum of 2,099,999,997,690,000 Bitcoin in Satoshis
-# Total BTC is 2099999997690000 Satoshis
+# note - There are a maximum of 2,099,999,997,690,000 Bitcoin in Sat
+# Total BTC is 2099999997690000 Sat
 # https://en.bitcoin.it/wiki/Bitcoin
 
 # setup
@@ -27,8 +27,8 @@ halving_count = np.int64(0)
 
 total = np.int64(0)
 
-# current_reward = np.float128(4294967296) # float128 - 2^32 = 42 9496 7296 Satoshis
-current_reward = np.int64(4294967296) # int64 - 2^32 = 42 9496 7296 Satoshis
+# current_reward = np.float128(4294967296) # float128 - 2^32 = 42 9496 7296 Sat
+current_reward = np.int64(4294967296) # int64 - 2^32 = 42 9496 7296 Sat
 init_reward_printer = current_reward # store it for print after
 
 # reward_interval = np.int64(210000) # BTC about 4 years
@@ -82,7 +82,7 @@ print ""
 # blocktime
 print "  Block Time:\t\t%d" % blocktime, "Seconds"
 # reward
-print "  Initial Block Reward:\t%d" % (np.float128(init_reward_printer)), "Satoshis"
+print "  Initial Block Reward:\t%d" % (np.float128(init_reward_printer)), "Sat"
 print "  Initial Block Reward:\t%.8f" % (np.float128(init_reward_printer)/1e+8), "COINs"
 # reward_interval
 print "  Halving Interval:\t%d" % reward_interval, "Blocks"
@@ -99,7 +99,7 @@ print "  * in Hours:\t\t  %.16g" % ( halving_count * (np.float128(reward_interva
 print "  * in Minutes:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime / 60) ), "Minutes"
 print "  * in Seconds:\t\t  %.16g" % ( halving_count * (np.float128(reward_interval) * blocktime) ), "Seconds"
 # total
-print "  Total Satoshis:\t%d" % total, "Satoshis"
+print "  Total Sat:\t%d" % total, "Sat"
 print "  Total COINs:\t\t%f" % (total/1e+8), "COINs" # %.6f but it works. because %.8f NOT WOKRED!
 print ""
 
