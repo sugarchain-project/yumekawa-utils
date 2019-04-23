@@ -29,7 +29,7 @@ set title "Sugarchain Halving Schedule\n\
 {/*0.75\
 Total Supply = {2^{30}} = {/:Bold 1073741824} (in theory), {/:Bold 1073741823.875} (in actual)\n\
 {/*0.75\
-Block Reward = {2^{32}}/c = {/:Bold 42.94967296} coin, [c = 1e+8], Block Time = {/:Bold 5} seconds,\n\
+Block Reward = {2^{32}}/c = {/:Bold 42.94967296} coin, [c = 1e+8], Block Time = {/:Bold 5.0} seconds,\n\
 {/*0.75\
 Block Interval = {5^{8}}*32 = {/:Bold 12500000} blocks (approx. 2 years),\
 }" font ",15" offset 0,0;
