@@ -43,14 +43,14 @@ set xlabel "Halving Count (approx. every 2 years)" tc rgb "black" offset 0;
 set lmargin at screen 0.08;
 set yrange [0:*];
 set format y "%.0f"; # actually 1073741823.875 but rounded
-set ylabel "Total Supply" tc rgb "red" rotate by -30 left offset 1.0, -0.15;
+set ylabel "Total Supply" tc rgb "red" offset 1.0, -0.15;
 set ytics nomirror;
 
 set rmargin at screen 0.90;
 set y2range [0:*];
 set y2tics 0, 1e+9; 
 set format y2 "%.8g";
-set y2label "Block Reward" tc rgb "blue" rotate by 30 right offset -1.0, 0.0;
+set y2label "Block Reward" tc rgb "blue" offset -1.0, 0.0;
 
 set grid xtics lc rgb "#888888" lw 1 lt 0;
 set grid ytics lc rgb "#888888" lw 1 lt 0;
