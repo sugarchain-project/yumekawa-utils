@@ -70,7 +70,7 @@ plot \
     'max_money.csv' using 1:2 axis x1y1 with linespoints linestyle 1 title "Total Supply", \
     ''              using 1:4 axis x1y2 with steps linestyle 2 title "Block Reward", \
     ''              using 1:4 axis x1y2 with points linestyle 2 notitle, \
-    ''              using 1:2:(sprintf("%.0f", $2)) with labels font "Ubuntu Mono,10" rotate by -30 left offset 1.0,-0.3 tc rgb '#990000' notitle, \
+    ''              using 1:2:(sprintf("%.64g", $2)) with labels font "Ubuntu Mono,10" rotate by -30 left offset 1.0,-0.3 tc rgb '#990000' notitle, \
     ''              using 1:4:(sprintf("{%s}/c=%.8f", stringcolumn(3), $4)) axis x1y2 with labels font "Ubuntu Mono,10" rotate by 30 left offset 0.75,0.5 tc rgb '#000099' notitle, \
 
 # do setting min max range
